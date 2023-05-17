@@ -1,0 +1,32 @@
+// C++ Code
+
+class Solution{
+public:
+    int isPossible(int n, int m, string s)
+    {
+         int x=0,y=0;
+         int ll=0;
+         int rr=0;
+         int uu=0;
+         int dd=0;
+         
+         for(char ch:s)
+         {
+             if(ch=='L')
+                x--;
+             else if(ch=='R')
+                 x++;
+              else if(ch=='U')
+                 y++;
+              else
+                 y--;
+              ll=min(ll,x);
+              rr=max(rr,x);
+              uu=max(uu,y);
+              dd=min(dd,y);
+         }
+         int nn=uu-dd+1;
+         int mm=rr-ll+1;
+         return (nn<=n && mm<=m);
+    }
+};
