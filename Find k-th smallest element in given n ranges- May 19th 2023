@@ -1,0 +1,38 @@
+//C++
+
+class Solution{
+    public:
+    vector<int>kthSmallestNum(int n, vector<vector<int>>&range, int q, vector<int>queries){
+        //Write your code here
+        sort(range.begin(),range.end());
+        int prev=range[0][0],mx=0;
+        vector<pair<int,int>> vp;
+        for(int i=0; i<n; ++i) {
+            if(range[i][0]>mx and mx>0) {
+                vp.push_back({prev,mx});
+                prev=range[i][0];
+            }
+            mx=max(mx,range[i][1]);
+        }
+        vp.push_back({prev,mx});
+        vector<int> ans;
+        for(int i=0; i<queries.size(); ++i) {
+            int ch=0;
+            for(int j=0; j<vp.size(); ++j) {
+                if(vp[j].second-vp[j].first+1<queries[i]) {
+                    queries[i]=queries[i]-(vp[j].second-vp[j].first+1);
+                }
+                else {
+                    ans.push_back(vp[j].first+queries[i]-1);
+                    ch=1;
+                    break;
+                }
+            }
+            if(ch==0) {
+                ans.push_back(-1);
+            }
+        }
+        return ans;
+    
+    } 
+};
