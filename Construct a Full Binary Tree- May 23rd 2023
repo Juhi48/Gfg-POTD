@@ -1,0 +1,23 @@
+//C++
+
+ class Solution{
+  public:
+  Node* solve(int pre[],int s,int e){
+      if(s>e)return NULL;
+      if(s==e)return new Node(pre[s]);
+      
+      Node* root=new Node(pre[s]);
+      int size=(e-s)/2;
+  
+      root->left=solve(pre,s+1,s+size);
+
+      root->right=solve(pre,s+size+1,e);
+      return root;
+  }
+    Node* constructBinaryTree(int pre[], int preMirror[], int size)
+    {
+        // Code here
+        Node* ans=solve(pre,0,size-1);
+        return ans;
+    }
+};
