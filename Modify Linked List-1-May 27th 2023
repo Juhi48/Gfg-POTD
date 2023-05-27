@@ -1,0 +1,63 @@
+//C++
+
+class Solution{
+    public:
+    struct Node* modifyTheList(struct Node *head)
+    {
+        //add code here.
+        
+        struct Node* slow=head;
+        struct Node* fast=head;
+        struct Node* pre=NULL;
+        
+        //Find mid point of the list
+        while(fast && fast->next){
+            fast=fast->next->next;
+            pre=slow;
+            slow=slow->next;
+        }
+        
+        
+        pre->next=NULL;
+        pre=NULL;
+        struct Node* nxt=NULL;
+        //reverse the first half of the list
+        while(head){
+            nxt=head->next;
+            head->next=pre;
+            pre=head;
+            head=nxt;
+        }
+        
+        
+        struct Node* curr=pre;
+        head=slow;
+        //checking odd or even length
+        if(fast && fast->next==NULL) slow=slow->next;
+        
+        //update values by doing given operation
+        while(slow){
+            int value=curr->data;
+            curr->data=slow->data-curr->data;
+            slow->data=value;
+            slow=slow->next;
+            curr=curr->next;
+        }
+        
+        
+        curr=pre;
+        nxt=NULL;
+        pre=head;// connect 2nd half with 1st half
+        //again reverse the first half of the list
+        while(curr){
+            nxt=curr->next;
+            curr->next=pre;
+            pre=curr;
+            curr=nxt;
+        }
+        
+        return pre;
+        
+        
+    }
+};
