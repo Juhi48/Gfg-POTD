@@ -1,0 +1,29 @@
+//C++
+
+class Solution {
+  public:
+   bool findIt(string& pattern, string& CamelCaseString) {
+        
+        int i = 0, j = 0, n = pattern.length(), m = CamelCaseString.length();
+        
+        while(i < n and j < m) {
+            if(pattern[i] == CamelCaseString[j])i++;
+            else if(isupper(CamelCaseString[j]))return 0;
+            j++;
+        }
+        
+        return i == n ? 1 : 0;
+    }
+    vector<string> CamelCase(int N, vector<string>& Dictionary, string& Pattern) {
+        // code here
+        vector<string> res;
+        
+        for(auto &str: Dictionary) {
+            if(findIt(Pattern,str))res.push_back(str);
+        }
+        
+        if(res.empty())res.push_back("-1");
+        
+        return res;
+    }
+};
