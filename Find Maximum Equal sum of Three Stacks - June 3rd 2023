@@ -1,0 +1,39 @@
+//C++
+
+class Solution{
+public:
+    void dec(vector<int>&arr,long long &sum,int &curr)
+    {
+        sum-=arr[curr];
+        curr++;
+    }
+    int maxEqualSum(int N1,int N2,int N3,vector<int> &S1,vector<int> &S2,vector<int> &S3){
+        long long sum1=0,sum2=0,sum3=0;
+        for(auto it:S1)sum1+=it;
+        for(auto it:S2)sum2+=it;
+        for(auto it:S3)sum3+=it;
+        int curr1=0,curr2=0,curr3=0;
+        
+        while(sum1!=sum2 or sum2!=sum3)
+        {
+            long long mini=min({sum1,sum2,sum3});
+            if(curr1==N1 or curr2==N2 or curr3==N3)return 0;
+            if(mini==sum1)
+            {
+                if(mini!=sum2)dec(S2,sum2,curr2);
+                if(mini!=sum3)dec(S3,sum3,curr3);
+            }
+            else if(mini==sum2)
+            {
+                if(mini!=sum1)dec(S1,sum1,curr1);
+                if(mini!=sum3)dec(S3,sum3,curr3);
+            }
+            else if(mini==sum3)
+            {
+                if(mini!=sum1)dec(S1,sum1,curr1);
+                if(mini!=sum2)dec(S2,sum2,curr2);
+            }
+        }
+        return sum1;
+    }
+};
