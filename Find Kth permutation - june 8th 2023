@@ -1,0 +1,20 @@
+//C++
+
+class Solution
+{
+public:
+    string kthPermutation(int n, int k)
+    {
+        // code here
+        
+        string num="";
+        for(int i=1; i<=n; i++){
+            num+=to_string(i);
+        }
+        while(k>1){
+        next_permutation(num.begin(), num.end());
+        k--;
+        }
+        return num;
+    }
+};
