@@ -1,0 +1,15 @@
+//C++
+
+class Solution
+{
+    public:
+    unordered_map<int,int>f;
+    void insert(queue<int> &q, int k)
+    {  
+        f[k]++;  
+    }
+    int findFrequency(queue<int> &q, int k)
+    {
+        return f[k];  
+    }
+};
