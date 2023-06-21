@@ -1,0 +1,12 @@
+//C++
+
+
+class Solution {
+  public:
+    int sumOfNaturals(int n) {
+        // code here
+        #define mod (int)(1e9 + 7)
+        return ((n*1LL*(n+1))/2)%mod;
+ 
+    }
+};
