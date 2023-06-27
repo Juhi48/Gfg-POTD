@@ -1,0 +1,45 @@
+//C++
+
+// structure of the node is as follows
+
+struct Node
+{
+	int data;
+	struct Node* next;
+	
+	Node(int x){
+	    data = x;
+	    next = NULL;
+	}
+	
+};
+
+*/
+class Solution
+{
+    public:
+    struct Node* makeUnion(struct Node* head1, struct Node* head2)
+    {
+        // code here
+        set<int>st;    //creating a set
+        
+        while(head1){
+            st.insert(head1->data);        //inserting data in sorted and remove dupicacy in set
+            head1 = head1->next;
+        }
+        while(head2){
+            st.insert(head2->data);        //inserting data in sorted and remove dupicacy in set
+            head2 = head2->next;
+        }
+        
+        Node *list = new Node(0);     //creating a list for adding those data
+        Node *h = list;    // creating pointer ,pointing to list
+        
+        for(auto i:st){ 
+            list->next = new Node(i);      //traversing though the set and putting all data together
+            list = list->next;
+        }
+        return h->next;
+        
+    }
+};
