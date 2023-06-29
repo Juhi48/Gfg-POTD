@@ -1,0 +1,30 @@
+//C++
+
+class Solution{
+public:
+    int digSq(int n)
+    {
+        int ans=0;
+        while(n){
+            int temp=n%10;
+            ans+=temp*temp;
+            n/=10;
+        }
+        return ans;
+    }
+    
+    int nextHappy(int n)
+    {
+        while(n){
+            n++;
+          int slow=n;
+          int fast=n;
+          do{
+            slow=digSq(slow);
+            fast=digSq(digSq(fast));
+          }while(slow!=fast);
+          if (slow==1)
+          return n;
+        }
+    }
+};
