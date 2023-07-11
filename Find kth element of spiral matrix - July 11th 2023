@@ -1,0 +1,48 @@
+//C++
+
+class Solution
+{
+    public:
+    /*You are required to complete this method*/
+    int findK(int a[MAX][MAX],int n,int m,int k)
+    {
+        int top, bottom, left, right, cnt;
+        top = left = cnt = 0;
+        bottom = n-1; right = m-1;
+        
+        while(top < n && right >= 0){
+            
+            for(int i = left; i<=right; i++){
+                cnt += 1;
+                if(cnt == k) return a[top][i];
+            }
+            top += 1;
+            
+            for(int i = top; i<=bottom; i++){
+                cnt += 1;
+                if(cnt == k) return a[i][right];
+            }
+            right -= 1;
+            
+            if(top < n){
+                
+                for(int i = right; i>=left; i--){
+                    cnt += 1;
+                    if(cnt == k) return a[bottom][i];
+                }
+                bottom -= 1;
+            }
+            
+            if(right >= 0){
+                
+                for(int i = bottom; i>=top; i--){
+                    cnt += 1;
+                    if(cnt == k) return a[i][left];
+                }
+                left += 1;
+            }
+        }
+        
+        return 0;
+    }
+};
