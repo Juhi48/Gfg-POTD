@@ -1,0 +1,20 @@
+//C++
+
+class Solution{
+    public:
+    char nonrepeatingCharacter(string S){
+         int first = 0, second = 0;
+         for(char x:S) {
+             int y = x-'a';
+             if(((first>>y)&1)) second |= (1<<y);
+             first |= (1<<y);
+         }
+         
+         for(char x:S) {
+             int y = second>>(x-'a');
+             if((y&1) == 0) return x;
+         }
+         return '$';
+    }
+
+};
