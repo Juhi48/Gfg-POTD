@@ -1,0 +1,52 @@
+//C++
+
+class Solution
+{
+    public:
+    //Function to remove duplicates from unsorted linked list.
+    Node * removeDuplicates( Node *head) 
+    {
+     // your code goes here
+     
+     //Create two pointers, temp and prev, both pointing to the head of the linked list.
+     Node*temp = head;
+     Node*prev = head;
+     
+     // Create a set to keep track of unique values seen so far in the linked list.
+    // The set data structure ensures that it only stores unique values automatically.
+       
+     set<int> st;
+     
+     // Start traversing the linked list.
+     while(temp)
+     {
+         
+         // If the current node's data is already present in the set, it means it's a duplicate.
+         if(st.find(temp->data)!=st.end())
+         {
+             
+             // Remove the duplicate node by updating the 'next' pointer of the previous node.
+                // This effectively skips the current duplicate node from the linked list.
+             prev->next = temp->next;
+             
+              // Move 'temp' to the next node (skipping the duplicate).
+             temp=prev->next;
+         }
+         
+         
+         else{
+             
+             
+             // If the current node's data is not present in the set, it's a new unique value.
+                // Add it to the set so that we can detect duplicates later in the linked list.
+             st.insert(temp->data);
+             
+             // Move both 'prev' and 'temp' pointers to their respective next nodes.
+             prev=temp;
+             temp=temp->next;
+         }
+     }
+     return head; // Return the head of the modified linked list with duplicates removed.
+        
+    }
+};
