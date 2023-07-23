@@ -1,0 +1,42 @@
+//C++
+
+class Solution
+{
+    private:
+   
+
+void sortLinkedList(Node *&head)
+{
+    vector<int> elements;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+        elements.push_back(temp->data);
+        temp = temp->next;
+    }
+
+    sort(elements.begin(), elements.end());
+
+    temp = head;
+    for (size_t i = 0; i < elements.size(); i++)
+    {
+        temp->data = elements[i];
+        temp = temp->next;
+    }
+}   
+
+public:
+    //Function to sort a linked list of 0s, 1s and 2s.
+    Node* segregate(Node *head) 
+    {
+        
+        // Add code here
+        sortLinkedList(head);
+        
+       
+
+        return head;
+        
+        
+    }
+};
