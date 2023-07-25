@@ -1,0 +1,33 @@
+//C++
+
+vector<int> findSpiral(Node *root)
+{
+    list<Node*> l1, l2;
+    vector<int> v;
+    
+    l1.push_back(root);
+    do {
+        if (l2.empty()) {
+            while(!l1.empty()) {
+                Node *d = l1.back();
+                v.push_back(d->data);
+                if (d->right != NULL) l2.push_back(d->right);
+                if (d->left != NULL) l2.push_back(d->left);
+                l1.pop_back();
+            }
+        } else if (l1.empty()) {
+            while(!l2.empty()) {
+                Node *d = l2.back();
+                v.push_back(d->data);
+                if (d->left != NULL) l1.push_back(d->left);
+                if (d->right != NULL) l1.push_back(d->right);
+                l2.pop_back();
+            }
+        } else {
+            break;
+        }
+    } while(!l1.empty() || !l2.empty());
+    
+    return v;
+}
+ 
