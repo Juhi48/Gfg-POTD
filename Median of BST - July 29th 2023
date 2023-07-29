@@ -1,0 +1,26 @@
+//C++
+
+void solve(Node *root, vector<float> &ans)
+{
+    if(root!=NULL)
+    {
+        solve(root->left,ans);
+        ans.push_back(root->data);
+        solve(root->right,ans);
+    }
+}
+float findMedian(struct Node *root)
+{
+      vector<float> ans;
+      solve(root,ans);
+      int n=ans.size();
+      if(n%2==1)
+      {
+          return ans[n/2];
+      }
+      else
+      {
+          float z=(ans[n/2]+ans[(n/2)-1])/2;
+          return z;
+      }
+}
