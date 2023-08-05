@@ -1,0 +1,62 @@
+//C++
+
+//Driver code
+#include <bits/stdc++.h>
+using namespace std
+
+
+class Solution{
+public:
+    long long findMinDiff(vector<long long> a, long long n, long long m){
+        // Function to find the minimum difference between any two elements
+        // of the array 'a' after selecting 'm' elements from it.
+
+        long long start = 0, end = m-1; // Initialize two pointers 'start' and 'end'.
+
+        sort(a.begin(),a.end()); // Sort the array in ascending order.
+
+        long long ans = INT_MAX; // Initialize 'ans' to the maximum possible integer value.
+
+        while (end < n) // Loop until 'end' reaches the end of the array.
+        {
+            long long pro = abs(a[start] - a[end]); // Calculate the absolute difference between the elements at 'start' and 'end'.
+
+            if (ans > pro) // Check if the calculated difference is smaller than the current 'ans'.
+            {
+                ans = pro; // Update 'ans' to the smaller difference.
+            }
+
+            start++; // Move the 'start' pointer to the right.
+            end++; // Move the 'end' pointer to the right.
+        }
+
+        return ans; // Return the minimum difference found.
+    }   
+};
+
+
+//Driver Code
+
+int main()
+{
+long long t;
+cin>> t;
+while(t--)
+{
+long long n;
+cin>>n;
+vector<long long> a;
+long long x;
+for (Long long i = 0;i<n;i++)
+{
+cin>>x;
+a.pushback(x);
+}
+
+long long m;
+cin>>m;
+solution ob;
+cout<<ob.findMinDiff(a,n,m)<<endl;
+}
+return 0;
+}
