@@ -1,0 +1,21 @@
+//C++
+
+class Solution{
+public: 
+    long long int largestPrimeFactor(int N){
+        // code here
+        
+         long long ans=0;
+       for(int i=2;i<=N;i++)
+       {
+           while(N%i==0)
+           {
+               long long maxi=i;
+               ans=max(ans,maxi);
+               N=N/i;
+           }
+       }
+       return ans;
+    
+    }
+};
