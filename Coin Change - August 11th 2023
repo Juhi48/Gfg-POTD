@@ -1,0 +1,26 @@
+//C++
+
+class Solution {
+public:
+    long long int count(int coins[], int N, int sum) {
+        // Declare a dynamic programming array to store results.
+        long dp[sum + 1] = {0};
+
+        // There's one way to make sum 0: not using any coins.
+        dp[0] = 1;
+
+        // Fill in the dynamic programming table using a bottom-up approach.
+        for (int i = 0; i < N; i++) {
+            for (int j = coins[i]; j <= sum; j++) {
+                // dp[j - coins[i]] represents the number of ways to make sum j-coins[i]
+                // using the current coin. We accumulate this with the previous result dp[j]
+                // to get the total number of ways to make sum j with the current coin.
+                dp[j] += dp[j - coins[i]];
+            }
+        }
+
+        // The final result is stored in dp[sum], which represents the number of ways
+        // to make the given sum using all the available coin denominations.
+        return dp[sum];
+    }
+};
