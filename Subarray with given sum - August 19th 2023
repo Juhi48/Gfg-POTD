@@ -1,0 +1,22 @@
+//C++
+
+class Solution
+{
+    public:
+    //Function to find a continuous sub-array which adds up to a given number.
+    
+    vector<int> subarraySum(vector<int>arr, int n, long long s)
+    {
+        // Your code here
+        if(s==0) return {-1};
+        long long int l=0,r=0,sum=0;
+        while(r<n || l<n){
+            if(sum==s) return {l+1,r};
+            else if(sum<s && r<n) {sum+=arr[r];r++;}
+            else {sum-=arr[l];l++;}
+            if(l>r) break;
+        }
+        
+        return {-1};
+    }
+};
