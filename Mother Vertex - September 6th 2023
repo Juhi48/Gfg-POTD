@@ -1,0 +1,31 @@
+//C++
+
+
+class Solution 
+{
+    public:
+    //Function to find a Mother Vertex in the Graph.
+    int topo;
+    vector<int> vis;
+    void dfs(int node, vector<int>g[])
+    {
+        vis[node] = 1;
+        for(auto &x:g[node]) if(vis[x] == 0) dfs(x, g);
+        topo = node;
+    }
+    int cnt_dfs(int node, vector<int>g[]){
+        vis[node] = 1;
+        int ans = 1;
+        for(auto &x:g[node]) if(vis[x] == 0) ans += cnt_dfs(x, g);
+        return ans;
+    }
+	int findMotherVertex(int n, vector<int>g[])
+	{
+	    vis.resize(n);
+	    for(int i=0;i<n;i++) if(vis[i] == 0) dfs(i, g);
+	    vis.assign(n,0);
+	    if(cnt_dfs(topo, g) == n) return topo;
+	    return -1;
+	}
+
+};
