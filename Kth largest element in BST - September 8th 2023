@@ -1,0 +1,22 @@
+//C++
+
+class Solution
+{
+    public:
+    
+    int kthLargest(Node *root, int &k)
+    {
+        if(root==NULL) return 0;
+        
+        int a = kthLargest(root->right,k);
+        if(!k) return a;
+        
+        if(k) k--;
+        if(!k) return root->data;
+        
+        int b = kthLargest(root->left,k);
+        if(!k) return b;
+        
+        return root->data;
+    }
+};
