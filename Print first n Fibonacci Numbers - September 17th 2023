@@ -1,0 +1,22 @@
+//C++
+
+
+class Solution
+{
+    public:
+    //Function to return list containing first n fibonacci numbers.
+    vector<long long> printFibb(int n) 
+    {
+       vector<long long> vt;
+       vt.push_back(1);
+       if(n==1)return vt;
+       vt.push_back(1);
+       n-=2;
+       while(n--)
+       {
+           vt.push_back(vt[vt.size()-2] + vt[vt.size()-1]);
+       }
+       return vt;
+    }
+};
+
