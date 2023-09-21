@@ -1,0 +1,25 @@
+//C++
+
+class Solution
+{
+    public:
+    //Function to find the maximum money the thief can get.
+    int FindMaxSum(int arr[], int n)
+    {   if(n==1) return arr[0];
+        if(n==2) return max(arr[0],arr[1]);
+        
+        // Your code here
+        int a=arr[0];
+        int b=max(arr[0],arr[1]);
+        int c;
+        for(int i=2;i<n;i++)
+        {
+            c=max(arr[i]+a,b);
+            a=b;
+            b=c;
+        }
+        
+        return c;
+   
+    }
+};
