@@ -1,0 +1,41 @@
+//C++
+
+
+class Solution
+{
+    public:
+    vector<int> find(int arr[], int n , int x )
+        {
+        // code here
+        vector <int> ans;
+        int left,right;
+        bool isFoundLeft=false,isFoundRight=false;
+        // for left element
+        for(int i=0;i<n;i++){
+            if( arr[i] == x){
+                ans.push_back(i);
+                isFoundLeft=true;
+                break;
+            }
+        }
+        
+        // for right element
+        for(int i=n;i>=0;i--){
+            if(arr[i] == x){
+                ans.push_back(i);
+                isFoundRight=true;
+                break;
+            }
+        }
+        
+        if(!isFoundLeft || !isFoundRight)
+        {
+            ans.push_back(-1);
+            ans.push_back(-1);
+    
+        }
+        
+        
+        return ans;
+    }
+};
