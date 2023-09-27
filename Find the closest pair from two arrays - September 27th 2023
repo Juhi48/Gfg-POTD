@@ -1,0 +1,33 @@
+//C++
+
+class Solution{
+  public:
+  
+   vector<int> printClosest(int arr[], int brr[], int n, int m, int x) {
+        //code here
+        int diff=INT_MAX;
+        int a=-1, b=-1;
+        int l=0, r=m-1;
+        vector<int> ans;
+        while(l<n and r>=0){
+            int curr_sum = arr[l] + brr[r];
+            int curr_diff = abs(curr_sum - x) ;
+            if(curr_diff < diff){
+                diff = curr_diff;
+                a = arr[l];
+                b = brr[r];
+                
+            }
+            if(curr_sum < x){
+                l++;
+            }else{
+                r--;
+            }
+                
+        }
+        ans.push_back(a);
+        ans.push_back(b);
+        return ans;
+    }
+};
+  
