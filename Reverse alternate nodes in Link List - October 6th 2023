@@ -1,0 +1,67 @@
+//C++
+
+class Solution
+{
+    public:
+    
+     void rearrange(struct Node *odd)
+    {
+        
+        
+        Node *a = odd;
+        Node *b = odd->next;
+        
+        if(b==NULL){
+            return;
+        }
+        
+        Node *temp = b->next;
+        
+        if(temp==NULL){
+            
+            return;
+        }
+        
+        Node *k = NULL;
+        
+        b->next = NULL;
+        
+        
+        while(true){
+            
+            if(temp!=NULL){
+                
+                a->next = temp;
+                a = temp;
+                
+            }else{
+                
+                break;
+            }
+            
+            temp = temp->next;
+            
+            if(temp!=NULL){
+                
+                
+                k = temp->next;
+                temp->next = b;
+                b = temp;
+                
+                temp = k;
+                
+            }else{
+                
+                break;
+            }
+            
+            }
+            
+            
+            a->next = b;
+            
+            
+        }
+
+
+};
