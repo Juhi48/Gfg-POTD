@@ -1,0 +1,26 @@
+//C++
+
+class Solution{
+    
+    private:
+    
+    int GetHeight(struct Node* node)
+    {
+        if (node == nullptr) return 0;
+        
+        int leftHeight = GetHeight(node->left);
+        int rightHeight = GetHeight(node->right);
+        
+        int maxHeight = max(leftHeight, rightHeight);
+        
+        return 1 + maxHeight;
+    }
+    
+    public:
+    //Function to find the height of a binary tree.
+    int height(struct Node* node){
+    
+        return GetHeight(node);
+
+    }
+};
